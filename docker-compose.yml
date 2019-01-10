@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mssql:
+    image: microsoft/mssql-server-linux:latest
+    container_name: mssql
+    ports:
+      - "1433:1433"
+    volumes:
+      - data:/var/opt/mssql
+    environment:
+      TZ: Asia/Tokyo
+      MSSQL_LCID: 1041
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Password!
+      MSSQL_PID: Express
+    restart: always
+volumes:
+  data:
+    driver: local
